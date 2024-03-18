@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    
+        .container {
+            margin: auto;
+            width: 200px;
+            height: 200px;
+            position: relative;
+            perspective: 1000px;
+        }
+    
+        .card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+    
+        .card.flip {
+            transform: rotateY(180deg);
+        }
+    
+        .card .front,
+        .card .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+    
+        .card .front {
+            background-color: #f00;
+        }
+    
+        .card .back {
+            background-color: #0f0;
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    
+        button {
+            cursor: pointer;
+        }
+    
+        .button {
+            position: fixed;
+            top: 250px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+    <body>
+        <button class="button" onclick="document.querySelector('.card').classList.toggle('flip')">Flip card</button>
+        <div class="container">
+            <div class="card">
+                <div class="front">Front</div>
+                <div class="back">
+                    <button onclick="console.log('Left button clicked!')">Left</button>
+                    <button onclick="console.log('Right button clicked!')">Right</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
